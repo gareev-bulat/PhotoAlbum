@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 const PinCard = (props) => {
 
-  const { imgPath, imgName, imgId } = props
+  const { imgPath, imgName, imgDate } = props
 
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/photo", { state: { imgPath, imgName, imgId }});
+    navigate("/photo", { state: { imgPath, imgName, imgDate }});
   }
 
   return (
