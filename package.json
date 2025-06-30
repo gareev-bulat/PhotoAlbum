@@ -1,5 +1,5 @@
 {
-  "name": "eva-memorial-monorepo",
+  "name": "photo-album",
   "private": true,
   "workspaces": [
     "frontend",
