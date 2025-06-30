@@ -2,46 +2,17 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import PinCard from '../../components/pinCard';
 import axios from 'axios';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, EditOutlined } from '@ant-design/icons';
 import { useLocation, useNavigate } from "react-router-dom";
 
 
 
-const OBJECTS_IMAGE = [
-  {
-    name: "img1",
-    id: "1",
-    path: "/images/drexel_logo.png",
-    date: "22/03/2024"
-  },
-
-  {
-    name: "img2",
-    id: "2",
-    path: "/images/drexel_logo.png",
-    date: "22/03/2024"
-  },
-
-  {
-    name: "img3",
-    id: "3",
-    path: "/images/drexel_logo.png",
-    date: "22/03/2024"
-  },
-
-  {
-    name: "img4",
-    id: "4",
-    path: "/images/drexel_logo.png",
-    date: "22/03/2024"
-  },
-];
-
-
-
-const home = () => {
+const Home = () => {
 
   const [objects, setObjects] = useState([]);
+  const [plus, setIsPlusHovered] = useState(false);
+  const [edits, setIsEditsHovered] = useState(false);
+  const[edit, setEdit] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,16 +28,28 @@ const home = () => {
     
   }, []);
 
+  function handleUpload () {
+
+    setEdit(false);
+    navigate("/form", {state: {background: location}})
+
+  }
+
   return (
     <div className="container">
+      <h2 className='header'>Family Album</h2>
     {objects.map((item) => (
-      <PinCard key={item.id} imgPath={item.path} imgTitle={item.title} imgDate={item.date} />
+      <PinCard key={item.id} imgPath={item.path} imgTitle={item.title} imgDate={item.date} edit={edit} />
       ))}
 
      <nav className='navbar'>
-      <button className='add-btn' onClick={() => navigate("/form", {state: {background: location}})}>
-      <PlusOutlined style={{fontSize: 45, color: "#3b0b0b"}} />
+      <button className='add-btn' onClick={handleUpload}>
+      <PlusOutlined style={{fontSize: 45, color: plus ? "#ffffff" : "#3b0b0b" }} onMouseEnter={() => setIsPlusHovered(true)} onMouseLeave={() => setIsPlusHovered(false)} />
       </button>
+      <button className='add-btn' onClick={() => setEdit(!edit)}>
+      <EditOutlined style={{fontSize: 45, color: edits ? "#ffffff" : "#3b0b0b" }} onMouseEnter={() => setIsEditsHovered(true)} onMouseLeave={() => setIsEditsHovered(false)} />
+      </button>
+      
     
     
      </nav>
@@ -74,4 +57,4 @@ const home = () => {
   );
 }
 
-export default home;
+export default Home;

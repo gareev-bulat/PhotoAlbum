@@ -87,14 +87,13 @@ input[type="file"]::file-selector-button:active {
 }
 
 .buttonForm {
-    position: absolute;
     bottom: 20%;
     align-self: center;
     width: 150px;
     height: 40px;
     border-radius: 20px;
     border: 1px solid rgb(176, 176, 176);
-    margin-top: 20px;
+    margin-top: 80px;
     font-size: 15px;
     font-weight: bold;
 
@@ -103,7 +102,6 @@ input[type="file"]::file-selector-button:active {
 
 
 .buttonForm:hover {
-    position: absolute;
     bottom: 20%;
     align-self: center;
     width: 150px;
@@ -112,7 +110,7 @@ input[type="file"]::file-selector-button:active {
     border: 1px solid rgb(152, 40, 40);
     color:white;
     background-color: brown;
-    margin-top: 20px;
+    margin-top: 80px;
 
     
 }
