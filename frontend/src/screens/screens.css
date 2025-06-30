@@ -42,9 +42,12 @@
 .input {
     border-radius: 20px;
     border: 1px solid rgb(176, 176, 176);
-    height: 40px;
+    height: 45px;
+    font-size: 15px;
+    color: rgb(40, 110, 251);
     margin-bottom: 10px;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .form {
@@ -58,6 +61,8 @@
    display: flex;
    position: left;
    padding: 10px;
+   font-weight: bold;
+   font-size: 15px;
 }
 
 .buttonForm {
@@ -69,6 +74,8 @@
     border-radius: 20px;
     border: 1px solid rgb(176, 176, 176);
     margin-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
 
     
 }

@@ -10,7 +10,7 @@ export default function SubmitForm() {
 
     const form = e.target;
     const payload = {
-      name: form.name.value,
+      title: form.title.value,
       date: form.date.value,
       path: form.path.value,
     }
@@ -33,13 +33,13 @@ export default function SubmitForm() {
 
         <form onSubmit={handleSubmit} className="form">
           <label className="label">Name</label>
-          <input name="name" className="input" required />
+          <input name="title" type="text" className="input" required />
 
           <label className="label">Date</label>
-          <input name="date" className="input" required />
+          <input name="date" type="date" className="input" required />
 
           <label className="label">Image URL</label>
-          <input name="path" className="input" required />
+          <input name="path" type="text" className="input" required />
 
           <button className="buttonForm" type="submit">Save</button>
         </form>

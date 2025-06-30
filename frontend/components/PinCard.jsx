@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 const PinCard = (props) => {
 
-  const { imgPath, imgName, imgDate } = props
+  const { imgTitle, imgDate } = props
+  const imgPath = "/images/drexel_logo.png"
 
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/photo", { state: { imgPath, imgName, imgDate }});
+    navigate("/photo", { state: { imgPath, imgTitle, imgDate }});
   }
 
   return (
@@ -18,7 +19,7 @@ const PinCard = (props) => {
         src={imgPath}
         width={300}
         height={300}
-        alt={imgName}
+        alt={imgTitle}
         className="photo"
       />
     </div>

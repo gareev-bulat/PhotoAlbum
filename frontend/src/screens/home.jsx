@@ -41,24 +41,26 @@ const OBJECTS_IMAGE = [
 
 const home = () => {
 
-  const [data, setData] = useState([]);
+  const [objects, setObjects] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const fetchData = async () => {
     const response = await axios.get("http://localhost:8080/api/photosinfo");
-    setData(response.data.photos);
+    console.log(response.data.photos);
+    setObjects(response.data.photos);
   };
 
   useEffect(() => {
     fetchData();
+    
   }, []);
 
   return (
     <div className="container">
-    {OBJECTS_IMAGE.map((item) => (
-      <PinCard key={item.id} imgPath={item.path} imgName={item.name} imgDate={item.date} />
+    {objects.map((item) => (
+      <PinCard key={item.id} imgPath={item.path} imgTitle={item.title} imgDate={item.date} />
       ))}
 
      <nav className='navbar'>
