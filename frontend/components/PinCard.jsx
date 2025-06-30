@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const PinCard = (props) => {
 
-  const { imgTitle, imgDate } = props
-  const imgPath = "/images/drexel_logo.png"
+  const { imgPath, imgTitle, imgDate } = props
 
   const navigate = useNavigate();
 

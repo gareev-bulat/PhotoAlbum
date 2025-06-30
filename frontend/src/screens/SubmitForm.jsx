@@ -9,17 +9,17 @@ export default function SubmitForm() {
     e.preventDefault();
 
     const form = e.target;
-    const payload = {
-      title: form.title.value,
-      date: form.date.value,
-      path: form.path.value,
-    }
+    const file = form.path.files[0];
+
+    const fd = new FormData();
+    fd.append("title", form.title.value);
+    fd.append("date", form.date.value);
+    fd.append("image", file);
 
     try{
-      await axios.post("http://localhost:8080/api/photosinfo", payload);
+      await axios.post("http://localhost:8080/api/photosinfo", fd);      
       navigate(-1);  
       console.log("Submitted!")
-
     } catch(err){
       console.error("Failed to save photo:", err);
     }
@@ -39,7 +39,7 @@ export default function SubmitForm() {
           <input name="date" type="date" className="input" required />
 
           <label className="label">Image URL</label>
-          <input name="path" type="text" className="input" required />
+          <input name="path" type="file" accept="image/*" required />
 
           <button className="buttonForm" type="submit">Save</button>
         </form>
