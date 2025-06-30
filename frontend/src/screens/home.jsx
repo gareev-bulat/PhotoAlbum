@@ -47,8 +47,8 @@ const home = () => {
   const location = useLocation();
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:8080");
-    setData(response.data.blogPosts);
+    const response = await axios.get("http://localhost:8080/api/photosinfo");
+    setData(response.data.photos);
   };
 
   useEffect(() => {

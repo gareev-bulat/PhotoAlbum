@@ -8,22 +8,25 @@ const CORS_OPTIONS = {
   origin: ["http://localhost:5173"]
 };
 
+
+const photos = [];
+
+
 app.use(cors(CORS_OPTIONS));
 
-app.get("/", (req, res) => {
-  res.json({
-    blogPosts: [
-      {
-        title: "\"Neymar's Return to Santos and Its Impact on Grêmio\",",
-        content: "Grêmio will face tougher competition now that Neymar is back at Santos."
-      },
-      {
-        title: "\"The Importance of Digital Marketing for Your Business\",",
-        content: "Digital marketing is a powerful tool to boost your business growth."
-      }
-    ]
-  });
-});
+app.use(express.json());
+
+app.get("/api/photosinfo", (req, res) => {
+  res.json({photos})
+
+})
+
+
+app.post("/api/photosinfo", (req, res) => {
+  console.log("Form data on the server:", req.body);
+  photos.push(req.body);
+  res.status(201).json({success: true});
+})
 
 app.listen(8080, () => {
   console.log("Server is running on port 8080");

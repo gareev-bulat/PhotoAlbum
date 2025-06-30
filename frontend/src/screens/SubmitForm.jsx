@@ -1,15 +1,29 @@
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./screens.css";
 
 export default function SubmitForm() {
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log("Submitted!")
-    /* TODO: post data … */
-    navigate(-1);               // go back to the grid
+    const form = e.target;
+    const payload = {
+      name: form.name.value,
+      date: form.date.value,
+      path: form.path.value,
+    }
+
+    try{
+      await axios.post("http://localhost:8080/api/photosinfo", payload);
+      navigate(-1);  
+      console.log("Submitted!")
+
+    } catch(err){
+      console.error("Failed to save photo:", err);
+    }
+               
   }
 
   return (
@@ -22,7 +36,7 @@ export default function SubmitForm() {
           <input name="name" className="input" required />
 
           <label className="label">Date</label>
-          <input name="name" className="input" required />
+          <input name="date" className="input" required />
 
           <label className="label">Image URL</label>
           <input name="path" className="input" required />
